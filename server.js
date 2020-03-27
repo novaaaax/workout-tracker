@@ -30,20 +30,35 @@ app.get("/stats",(req,res) =>{
 
 //async addExercise function
 //add exercise
-app.post("/api/workout",(req,res) =>{
-    db.Workout.create(body)
-    .then(({ _id }) => db.Exercise.findOneAndUpdate({}, { $push: { exercise: _id } }, { new: true }))
-    .then(dbUser => {
-      res.json(dbUser);
-    })
-    .catch(err => {
-      res.json(err);
-    })
+app.post("/api/workouts",(req,res) =>{
+    db.Workout.create(req.body, (err, data) => {
+        if (err){
+            throw err;
+        }
+        res.send(data);
+    });
 });
+
+app.get("/api/workouts", (req, res) => {
+    db.Workout.find({})
+    .then()
+});
+
 app.get("/api/workouts/range",(req, res) => {
-    db.Workout.where({})
+    db.Workout.find({})
+    .then(exercise => {
+        res.json(exercise);
+    })
 });
+
 app.put("/app/workouts/update/:id",(req, res) =>{
+    db.Workout.findOneAndUpdate({ _id: mongoose.Types.ObjectId(req.params.id)},
+    { $set: {exercises: req.body}}, (err, data) => {
+        if(err){
+            throw err;
+        }
+        res.send(data)
+    })
 });
 //Start server
 app.listen(PORT, () => {
