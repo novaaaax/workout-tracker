@@ -40,18 +40,23 @@ app.post("/api/workouts",(req,res) =>{
 });
 
 app.get("/api/workouts", (req, res) => {
-    db.Workout.find({})
-    .then()
+    db.Workout.find({}, (err, data) => {
+        if(err){
+            throw err;
+        }
+        res.json(data)
+    })
+   
 });
 
 app.get("/api/workouts/range",(req, res) => {
     db.Workout.find({})
-    .then(exercise => {
-        res.json(exercise);
+    .then(dbWorkout => {
+        res.json(dbWorkout);
     })
 });
 
-app.put("/app/workouts/update/:id",(req, res) =>{
+app.put("/api/workouts/update/:id",(req, res) =>{
     db.Workout.findOneAndUpdate({ _id: mongoose.Types.ObjectId(req.params.id)},
     { $set: {exercises: req.body}}, (err, data) => {
         if(err){
