@@ -14,8 +14,6 @@ app.use(express.static("public"));
 
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/workout", { useNewUrlParser: true });
 
-//Routes go here
-
 app.get("/", (req,res) => {
     res.sendFile(path.join(__dirname, "public/index.html"));
 });
@@ -28,8 +26,6 @@ app.get("/stats",(req,res) =>{
     res.sendFile(path.join(__dirname, "public/stats.html"));
 });
 
-//async addExercise function
-//add exercise
 app.post("/api/workouts",(req,res) =>{
     db.Workout.create(req.body)
     .then(dbWorkout => {
@@ -69,7 +65,7 @@ app.put("/api/workouts/:id",(req, res) =>{
         res.json(err)
     });
 });
-//Start server
+
 app.listen(PORT, () => {
     console.log(`App running on port localhost:${PORT}`);
   });
