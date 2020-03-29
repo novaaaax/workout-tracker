@@ -11,7 +11,7 @@ This project allows people to keep tracker of important details about their work
 ## How To Install: 
 Simply travel to deployed link in your browser.
 ## Usage:
-Anyone looks for an easy to use fitness tracker.
+Start a wokout bye clicking "New Workout" and then choose between resistance or cardio. Then enter in information about the exercises you're performing. You can add more exercises or start a new workout. There's also a fitness dashboard that shows you stats about your workout on graphs so you can easily measure your progress.
 ## Technologies Used/Bagdes: 
 ![img](https://img.shields.io/badge/Node.js-used-red)
 ## Lisence:  
@@ -20,5 +20,4 @@ MIT
 Edwin Genova
 ## Tests:
 None
-## GitHub: 
-![img](https://avatars0.githubusercontent.com/u/21047601?v=4)
+
